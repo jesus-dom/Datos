@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">intermedio</string>
+    <string name="nombre">Nombre</string>
+    <string name="correo">Correo</string>
+    <string name="telefono">Telefono</string>
+    <string name="button_save">Guardar</string>
+    <string name="btnactdat">Activity Datos</string>
+    <string name="title">Android</string>
+</resources>
