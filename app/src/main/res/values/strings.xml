@@ -21,4 +21,9 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="button_clagson">Clase a Gson</string>
+    <string name="button_gsonclas">Gson a Clase</string>
+    <string name="results">Resultado</string>
+
 </resources>
