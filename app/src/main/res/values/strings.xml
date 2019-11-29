@@ -26,4 +26,6 @@
     <string name="button_gsonclas">Gson a Clase</string>
     <string name="results">Resultado</string>
 
+    <string name="botonllamada">Llamada</string>
+    <string name="botonllamaall">Llama a Todos</string>
 </resources>

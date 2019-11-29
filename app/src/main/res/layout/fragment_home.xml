@@ -49,6 +49,18 @@
             android:layout_height="wrap_content"
             android:text="@string/results" />
 
+        <Button
+            android:id="@+id/buttonllamada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/botonllamada" />
+
+        <Button
+            android:id="@+id/buttonllamall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/botonllamaall" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

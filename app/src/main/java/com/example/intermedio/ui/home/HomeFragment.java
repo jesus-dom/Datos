@@ -15,15 +15,21 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.intermedio.R;
 import com.example.intermedio.models.Empleado;
+import com.example.intermedio.utils.Globals;
+import com.example.intermedio.utils.ReporteService;
 import com.google.gson.Gson;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
     private Gson gson;
-
     private TextView txtRes;
+    private ReporteService service;
 
 
 
@@ -65,7 +71,39 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        service = Globals.getApi().create(ReporteService.class);
+
+        Button btnLLamada = root.findViewById(R.id.buttonllamada);
+        btnLLamada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getEmpleado(5);
+
+
+            }
+        });
+
         return root;
+    }
+
+    private Call<Empleado> getEmpleadoCall;
+
+    private void getEmpleado(int id){
+        getEmpleadoCall = service.getEmpleadoUnico(id);
+        getEmpleadoCall.enqueue(new Callback<Empleado>() {
+            @Override
+            public void onResponse(Call<Empleado> call, Response<Empleado> response) {
+                if (response.isSuccessful()){
+                    Empleado empResult =response.body();
+                    claseAJson(empResult);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Empleado> call, Throwable t) {
+
+            }
+        });
     }
 
     private void claseAJson(Empleado empleado){
