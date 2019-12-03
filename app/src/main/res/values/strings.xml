@@ -28,4 +28,10 @@
 
     <string name="botonllamada">Llamada</string>
     <string name="botonllamaall">Llama a Todos</string>
+
+    <string name="rnombre">Nombre</string>
+    <string name="remail">Email</string>
+    <string name="Rtelefono">Telefono</string>
+    <string name="rreporte">Reporte</string>
+    <string name="butenviar">Enviar Reporte</string>
 </resources>
