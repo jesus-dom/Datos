@@ -34,4 +34,5 @@
     <string name="Rtelefono">Telefono</string>
     <string name="rreporte">Reporte</string>
     <string name="butenviar">Enviar Reporte</string>
+    <string name="txtlocation">GPS</string>
 </resources>

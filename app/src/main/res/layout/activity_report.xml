@@ -68,6 +68,19 @@
             android:autofillHints="@string/rreporte"
             android:inputType="textMultiLine" />
 
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtlocation" />
+
+        <EditText
+            android:id="@+id/rptgeo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
         <Button
             android:id="@+id/reporbutton"
             android:layout_width="match_parent"
