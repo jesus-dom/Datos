@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import com.example.intermedio.models.CallResult;
 import com.example.intermedio.utils.Globals;
 import com.example.intermedio.utils.ReporteService;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +34,8 @@ public class ReportActivity extends AppCompatActivity {
 
     //Variables de los campos de texto
     EditText txtNombre, txtEmail, txtTelefono, txtReporte, txtGeo;
+
+    private FusedLocationProviderClient provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +68,26 @@ public class ReportActivity extends AppCompatActivity {
                 guardarDatos();
             }
         });
+
+
+        //ultima localizacion del dispositivo
+        provider = new FusedLocationProviderClient(this);
         getPermisos();
+
     }
+
+    private void getUbicacion(){
+        provider.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if(location != null){
+                            txtGeo.setText(location.getLatitude()+","+location.getLongitude());
+                        }
+                    }
+                });
+    }
+
     private void guardarDatos(){
         Call<CallResult> llamadaGuardar = service.agregarReporte(
                 txtNombre.getText().toString(),
@@ -107,7 +130,8 @@ public class ReportActivity extends AppCompatActivity {
                     permisos,
                     PERMISO_USUARIO_LOCALIZACION);
         }else{
-            txtGeo.setText("YA TIENE PERMISO");
+            //txtGeo.setText("YA TIENE PERMISO");
+            getUbicacion();
         }
     }
 
@@ -115,7 +139,8 @@ public class ReportActivity extends AppCompatActivity {
         switch (requestCode){
             case PERMISO_USUARIO_LOCALIZACION:{
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    txtGeo.setText("SI DIO PERMISO");
+                    //txtGeo.setText("SI DIO PERMISO");
+                    getUbicacion();
                 }else{
                     txtGeo.setText("NO DIO PERMISO");
                 }

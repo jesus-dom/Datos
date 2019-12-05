@@ -4,6 +4,7 @@ import android.icu.text.StringSearch;
 
 import com.example.intermedio.models.CallResult;
 import com.example.intermedio.models.Empleado;
+import com.example.intermedio.models.LoginResult;
 
 import java.util.List;
 
@@ -26,6 +27,13 @@ public interface ReporteService {
                                      @Field("email") String email,
                                      @Field("telefono") String telefono,
                                      @Field("reporte") String reporte);
+
+    @FormUrlEncoded
+    @POST("login.php")
+    Call<LoginResult> login (@Field("username") String usuario,
+                             @Field("password") String contrasena);
+
+
     // http://isantosp.com/cursoAndroid/getAll.php
     //@GET("getall.php")
     //Call<List<Empleado>> getTodos();
